@@ -24,7 +24,21 @@ int verificaNumeradorZero(Racional_pt numRacional);
 
 int verificaAmbosZero(Racional_pt numRacional);
 
-double somaRacionais(Racional_pt valor1, Racional_pt valor2);
+Racional_pt somaRacionais(Racional_pt valor1, Racional_pt valor2);
 
 Racional_pt acumulaRacional(Racional_pt valor1, Racional_pt valor2);
+
+Racional_pt subtraiRacionais(Racional_pt valor1, Racional_pt valor2);
+
+Racional_pt multiplicaRacionais(Racional_pt valor1, Racional_pt valor2);
+
+Racional_pt acumulaMultiplicacaoRacionais(Racional_pt valor1, Racional_pt valor2);
+
+Racional_pt divideRacionais(Racional_pt valor1, Racional_pt valor2);
+
+Racional_pt elevaAoQuadrado(Racional_pt valor);
+
+Racional_pt raizQuadrada(Racional_pt valor);
+
+
 #endif
