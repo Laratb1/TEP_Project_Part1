@@ -17,7 +17,10 @@ Racional_pt criaNumRacional(long int numerador, long int denominador){
 		exit(1);
     }
     numRacional->num = numerador;
-    numRacional->den = denominador;
+    if(denominador == 0)
+        printf("Nao Existe");
+    else
+        numRacional->den = denominador;
 
     return numRacional;
 }
@@ -42,8 +45,8 @@ Racional_pt copiaNumRacional(Racional_pt num1, Racional_pt num2){
 int comparaNumeros(Racional_pt valor1, Racional_pt valor2){
     long double div1, div2;
 
-    div1 = (valor1->num) / (valor1->den);
-    div2 = (valor2->num) / (valor2->den);
+    div1 = (long double) (valor1->num) / (valor1->den);
+    div2 = (long double) (valor2->num) / (valor2->den);
 
     if(div1 == div2){
         return 0;
@@ -59,8 +62,8 @@ int comparaNumeros(Racional_pt valor1, Racional_pt valor2){
 int verificaEquivalente(Racional_pt valor1, Racional_pt valor2){
     long double div1, div2;
 
-    div1 = (valor1->num) / (valor1->den);
-    div2 = (valor2->num) / (valor2->den);
+    div1 = (long double) (valor1->num) / (valor1->den);
+    div2 = (long double) (valor2->num) / (valor2->den);
 
     if(div1 == div2)
         return 1;
@@ -89,9 +92,11 @@ int verificaAmbosZero(Racional_pt numRacional){
         return 0;
 }
 
-double somaRacionais(Racional_pt valor1, Racional_pt valor2){
-    double resultado;    
-    resultado = (valor1->num / valor1->den) + (valor2->num / valor2->den);
+Racional_pt somaRacionais(Racional_pt valor1, Racional_pt valor2){
+    Racional_pt resultado = (Racional_t*) malloc(sizeof(Racional_t));
+
+    resultado->num = (valor1->num * valor2->den) + (valor1->den * valor2->num);
+    resultado->den = (valor1->den * valor2->den);
 
     return resultado;
 }
@@ -102,4 +107,53 @@ Racional_pt acumulaRacional(Racional_pt valor1, Racional_pt valor2){
     valor1->den = (valor1->den * valor2->den);
 
     return valor1;
+}
+
+Racional_pt subtraiRacionais(Racional_pt valor1, Racional_pt valor2){
+    Racional_pt resultado = (Racional_t*) malloc(sizeof(Racional_t));
+
+    resultado->num = (valor1->num * valor2->den) - (valor1->den * valor2->num);
+    resultado->den = (valor1->den * valor2->den);
+
+    return resultado;
+}
+
+Racional_pt multiplicaRacionais(Racional_pt valor1, Racional_pt valor2){
+    Racional_pt resultado = (Racional_t*) malloc(sizeof(Racional_t));
+
+    resultado->num = (valor1->num * valor2->num);
+    resultado->den = (valor1->den * valor2->den);
+
+    return resultado;
+}
+
+Racional_pt acumulaMultiplicacaoRacionais(Racional_pt valor1, Racional_pt valor2){
+    valor1->num *= valor2->num;
+    valor1->den *= valor2->den;
+
+    return valor1;
+}
+
+Racional_pt divideRacionais(Racional_pt valor1, Racional_pt valor2){
+    Racional_pt resultado = (Racional_t*) malloc(sizeof(Racional_t));
+
+    resultado->num = (valor1->num * valor2->den);
+    resultado->den = (valor1->den * valor2->num);
+
+    return resultado;
+}
+
+Racional_pt elevaAoQuadrado(Racional_pt valor){
+    valor->num = pow(valor->num, 2);
+    valor->den = pow(valor->den, 2);
+
+    return valor;
+}
+
+Racional_pt raizQuadrada(Racional_pt valor){
+// por que isso imprime um inteiro e nao um double????
+    valor->num = (long double) sqrt(valor->num);
+    valor->den = (long double) sqrt(valor->den);
+
+    return valor;
 }
