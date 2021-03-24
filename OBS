@@ -1,0 +1,9 @@
+1) Steps to turn a real number into to a rational number 
+
+• Take a guess integer value for N.
+
+• Find D by rounding off (N/val).
+
+• Compute the difference between val and N/D. If the difference is less than the specified value, print the values of N and D.
+
+find more informations in: https://ecomputernotes.com/what-is-c/control-structures/rational-approximations-for-real-numbers
