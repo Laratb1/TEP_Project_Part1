@@ -39,7 +39,10 @@ void destroiNum(Racional_pt numRacional){
 }
 
 Racional_pt copiaNumRacional(Racional_pt num1, Racional_pt num2){
+    num1->num = num2->num;
+    num1->den = num2->den;
 
+    return num1;
 }
 
 int comparaNumeros(Racional_pt valor1, Racional_pt valor2){
@@ -156,4 +159,27 @@ Racional_pt raizQuadrada(Racional_pt valor){
     valor->den = (long double) sqrt(valor->den);
 
     return valor;
+}
+
+double converteRacionalEmReal(Racional_pt numRacional){
+    double numReal;
+    numReal = (double) numRacional->num / numRacional->den;
+
+    return numReal;
+}
+
+Racional_pt converteRealEmRacional(double numReal){
+    Racional_pt numRacional = (Racional_t*) malloc(sizeof(Racional_t));
+    long int numerador, denominador;
+    double erro;
+
+    for(numerador = 1; numerador < 1000000; numerador++){
+        denominador = numerador / numReal + 0.5;
+        erro = fabs(1.0-numerador/(denominador*numReal));
+        if(erro <= 0.00001){
+            numRacional->num = numerador;
+            numRacional->den = denominador;
+            return numRacional;
+        }
+    }
 }
