@@ -40,5 +40,9 @@ Racional_pt elevaAoQuadrado(Racional_pt valor);
 
 Racional_pt raizQuadrada(Racional_pt valor);
 
+double converteRacionalEmReal(Racional_pt numRacional);
+
+Racional_pt converteRealEmRacional(double numReal);
+
 
 #endif
