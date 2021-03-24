@@ -168,6 +168,7 @@ double converteRacionalEmReal(Racional_pt numRacional){
     return numReal;
 }
 
+// verificar se eh isso mesmo 
 Racional_pt converteRealEmRacional(double numReal){
     Racional_pt numRacional = (Racional_t*) malloc(sizeof(Racional_t));
     long int numerador, denominador;
@@ -176,10 +177,23 @@ Racional_pt converteRealEmRacional(double numReal){
     for(numerador = 1; numerador < 1000000; numerador++){
         denominador = numerador / numReal + 0.5;
         erro = fabs(1.0-numerador/(denominador*numReal));
-        if(erro <= 0.00001){
+        if(erro <= 0.0000000001){
             numRacional->num = numerador;
             numRacional->den = denominador;
             return numRacional;
         }
     }
+}
+
+int verificaRacionalConverteEmInteiro( Racional_t numRacional){
+
+}
+// atencao utilizacao da funcao converteRealEmRacional 
+Racional_pt obtemRacionalEntreIntervalos(){
+    Racional_pt numRacional = (Racional_t*) malloc(sizeof(Racional_t));
+    double nInicial = 3.1414, nFinal = 3.1416, numReal;
+
+    numReal = (nInicial + nFinal) / 2;
+
+    return converteRealEmRacional(numReal);
 }
