@@ -44,5 +44,8 @@ double converteRacionalEmReal(Racional_pt numRacional);
 
 Racional_pt converteRealEmRacional(double numReal);
 
+int verificaRacionalConverteEmInteiro( Racional_t numRacional);
+
+Racional_pt obtemRacionalEntreIntervalos();
 
 #endif
