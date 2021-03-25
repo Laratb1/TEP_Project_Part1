@@ -6,8 +6,18 @@
 #include "complexo_racional.h"
 
 int main(){
-    long int real, imag;
-    LI_Complexo_pt Complexo;
+    double *imag;
+    double *real;
+    Complexo_pt numero;
+
+    numero = criaComplexo(real, imag);
+
+    printf("%f", retornaReal(&numero));
+    printf("%f", retornaImaginario(numero));
+
+    destroiComplexo(numero);
+
+
 
     return 0;
 }
