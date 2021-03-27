@@ -128,21 +128,44 @@ int verificaApenasImaginario(Complexo_pt numComplexo){
         return 0;
 }
 
-int comparaNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+int comparaModuloNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
     double modulo1, modulo2;
     modulo1 = calculaModulo(numComplexo1);
     modulo2 = calculaModulo(numComplexo2);
 
 //verificar se essa logica esta correta
-    if(modulo1 == modulo2 && fabs(modulo1-modulo2) <= eps)
+    if(fabs(modulo1-modulo2) > eps){
+        if(modulo1 < modulo2)
+            return -1;
+        if(modulo1 > modulo2)
+            return 1;
+    }
+    else
         return 0;
-    if(modulo1 < modulo2 && fabs(modulo1-modulo2) <= eps)
-        return -1;
-    if(modulo1 > modulo2 && fabs(modulo1-modulo2) <= eps)
-        return 1;
+    
 }
 
+int comparaAngulosNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+    double angulo1, angulo2;
+    double imag1, imag2, real1, real2;
 
+    imag1 = *numComplexo1->imag;
+    real1 = *numComplexo1->real;
+    imag2 = *numComplexo2->imag;
+    real2 = *numComplexo2->real;
+
+    angulo1 = atan(imag1 / real1);
+    angulo2 = atan(imag2 / real2);
+
+    if(fabs(angulo1-angulo2) > eps){
+        if(angulo1 < angulo2)
+            return -1;
+        if(angulo1 > angulo2)
+            return 1;
+    }
+    else
+        return 0;
+}
 
 
 

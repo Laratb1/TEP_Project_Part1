@@ -36,5 +36,7 @@ int verificaApenasReal(Complexo_pt numComplexo);
 
 int verificaApenasImaginario(Complexo_pt numComplexo);
 
-int comparaNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+int comparaModuloNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+
+int comparaAngulosNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 #endif

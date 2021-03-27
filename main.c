@@ -11,17 +11,17 @@ int main(){
     Complexo_pt numero1, numero2;
     int resultado;
 
-    numero1 = criaComplexo(1, 0.0000009);
-    numero2 = criaComplexo(5, 8);
+    numero1 = criaComplexo(1000000000, 577350269);
+    numero2 = criaComplexo(2, 2);
 
-    resultado = comparaNumeros(numero1, numero2);
+    resultado = comparaAngulosNumeros(numero1, numero2);
 
     if(resultado == 1)
-        printf("2 maior\n");
+        printf("1 maior\n");
     if(resultado == 0)
         printf("I\n");
     if(resultado == -1)
-        printf("1 maior\n");
+        printf("2 maior\n");
 
     //printf("%f\n", *retornaReal(resultado));
     //printf("%f\n", *retornaImaginario(resultado));
