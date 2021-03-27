@@ -6,14 +6,14 @@
 #include "complexo_racional.h"
 
 int main(){
-    double *imag;
-    double *real;
+    double imag;
+    double real;
     Complexo_pt numero;
 
-    numero = criaComplexo(real, imag);
+    numero = criaComplexo(2, 3);
 
-    printf("%f", retornaReal(&numero));
-    printf("%f", retornaImaginario(numero));
+    printf("%f\n", *retornaReal(numero));
+    printf("%f\n", *retornaImaginario(numero));
 
     destroiComplexo(numero);
 
@@ -21,3 +21,5 @@ int main(){
 
     return 0;
 }
+
+//valgrind --leak-check=yes ./a.out

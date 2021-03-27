@@ -1,31 +1,31 @@
-/*#ifdef TIPADO_*/ 
+/*#ifdef TIPADO_ 
 #ifdef DESTE_TIPO_ double
-#ifdef DESTE_FORMATO_ 
+#ifdef DESTE_FORMATO_ */
 #include <stdio.h>
 #include <stdlib.h> 
 #include <math.h> 
 #include "complexo.h"
 
 typedef struct Complexo_st{
-	DESTE_TIPO_ *real;
-    DESTE_TIPO_ *imag;
+	double *real;
+    double *imag;
 }Complexo_t;
 
-Complexo_pt *criaComplexo (DESTE_TIPO_ *real, DESTE_TIPO_ *imag){
+Complexo_pt criaComplexo (double numReal, double numImag){
     Complexo_pt numComplexo = (Complexo_t*) malloc(sizeof(Complexo_t));
     if(numComplexo == NULL){
         printf("Memória insuficiente!\n");
 		exit(1);
     }
-    real = (DESTE_TIPO_*) malloc(sizeof(DESTE_TIPO_));
-    imag = (DESTE_TIPO_*) malloc(sizeof(DESTE_TIPO_));
-    if(real == NULL || imag == NULL){
+    numComplexo->real = (double*) malloc(sizeof(double));
+    numComplexo->imag = (double*) malloc(sizeof(double));
+    if(numComplexo->real == NULL || numComplexo->imag == NULL){
         printf("Memória insuficiente!\n");
 		exit(1);
     }
-    numComplexo->real = real;
-    numComplexo->imag = imag;
-
+    *numComplexo->real = numReal;
+    *numComplexo->imag = numImag;
+    
     return numComplexo;
 }
 
@@ -38,14 +38,18 @@ void destroiComplexo (Complexo_pt numComplexo){
     numComplexo = NULL;   
 }
 
-DESTE_TIPO_ *retornaReal (Complexo_pt numComplexo){
+double *retornaReal (Complexo_pt numComplexo){
     return numComplexo->real;
 }
 
-DESTE_TIPO_ *retornaImaginario (Complexo_pt numComplexo){
+double *retornaImaginario (Complexo_pt numComplexo){
     return numComplexo->imag;
 }
 
-#endif
-#endif
+Complexo_pt atribuiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+    numComplexo1->real
+}
+
+//#endif
+//#endif
 //#endif

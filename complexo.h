@@ -3,13 +3,15 @@
 
 typedef struct Complexo_st *Complexo_pt;
 
-Complexo_pt *criaComplexo (DESTE_TIPO_ *real, DESTE_TIPO_ *imag);
+Complexo_pt criaComplexo (double numReal, double numImag);
 
 void destroiComplexo (Complexo_pt numComplexo);
 
-DESTE_TIPO_ *retornaReal (Complexo_pt numComplexo);
+double *retornaReal (Complexo_pt numComplexo);
 
-DESTE_TIPO_ *retornaImaginario (Complexo_pt numComplexo);
+double *retornaImaginario (Complexo_pt numComplexo);
+
+Complexo_pt atribuiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
 
 
