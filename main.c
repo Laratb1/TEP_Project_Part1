@@ -8,14 +8,19 @@
 int main(){
     double imag;
     double real;
-    Complexo_pt numero;
+    Complexo_pt numero1, numero2, resultado;
 
-    numero = criaComplexo(2, 3);
+    numero1 = criaComplexo(2, 3);
+    numero2 = criaComplexo(5, 8);
 
-    printf("%f\n", *retornaReal(numero));
-    printf("%f\n", *retornaImaginario(numero));
+    resultado = converteDoubleParaLongInt(numero1);
 
-    destroiComplexo(numero);
+    printf("%f\n", *retornaReal(numero1));
+    printf("%f\n", *retornaImaginario(numero1));
+
+    destroiComplexo(numero1);
+    destroiComplexo(numero2);
+    destroiComplexo(resultado);
 
 
 

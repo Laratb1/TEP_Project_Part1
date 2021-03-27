@@ -47,8 +47,53 @@ double *retornaImaginario (Complexo_pt numComplexo){
 }
 
 Complexo_pt atribuiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
-    numComplexo1->real
+    numComplexo1->real = numComplexo2->real;
+    numComplexo1->imag = numComplexo2->imag;
+
+    return numComplexo1;
 }
+
+Complexo_pt copiaComplexo(Complexo_pt numero){
+    Complexo_pt numComplexo = (Complexo_t*) malloc(sizeof(Complexo_t));
+
+    numComplexo->real = numero->real;
+    numComplexo->imag = numero->imag;
+
+    return numComplexo;
+}
+
+Complexo_pt converteDoubleParaLongInt(Complexo_pt numComplexo){
+    numComplexo->real = (long int) numComplexo->real;
+    numComplexo->imag = (long int) numComplexo->imag;
+
+    return numComplexo;
+}
+
+Complexo_pt converteLongIntParaDouble(Complexo_pt numComplexo){
+
+}
+
+Complexo_pt converteDoubleParaRacional(Complexo_pt numComplexo){
+
+}
+
+Complexo_pt converteRacionalParaDouble(Complexo_pt numComplexo){
+
+}
+
+Complexo_pt converteRacionalParaLongInt(Complexo_pt numComplexo){
+
+}
+
+Complexo_pt converteLongIntPataRacional(Complexo_pt numComplexo){
+    double *modulo;
+
+    modulo = sqrt(pow(numComplexo->&real, 2) + pow(numComplexo->&imag, 2));
+}
+
+
+
+
 
 //#endif
 //#endif
