@@ -63,10 +63,7 @@ Complexo_pt copiaComplexo(Complexo_pt numero){
 }
 
 Complexo_pt converteDoubleParaLongInt(Complexo_pt numComplexo){
-    numComplexo->real = (long int) numComplexo->real;
-    numComplexo->imag = (long int) numComplexo->imag;
 
-    return numComplexo;
 }
 
 Complexo_pt converteLongIntParaDouble(Complexo_pt numComplexo){
@@ -86,9 +83,63 @@ Complexo_pt converteRacionalParaLongInt(Complexo_pt numComplexo){
 }
 
 Complexo_pt converteLongIntPataRacional(Complexo_pt numComplexo){
-    double *modulo;
 
-    modulo = sqrt(pow(numComplexo->&real, 2) + pow(numComplexo->&imag, 2));
+}
+
+double calculaModulo(Complexo_pt numComplexo){
+    double modulo, real, imaginario;
+
+    real = *numComplexo->real;
+    imaginario = *numComplexo->imag;
+
+    modulo = sqrt(pow(real, 2) + pow(imaginario, 2));
+
+    return modulo;
+}
+
+int verificaModuloZero(Complexo_pt numComplexo){    
+  
+    //isso aqui que e para fazer com o eps?
+    if(calculaModulo(numComplexo) <= eps)
+        return 1;
+    else 
+        return 0;
+}
+
+int verificaApenasReal(Complexo_pt numComplexo){
+    double imaginario;
+
+    imaginario = *numComplexo->imag;
+
+    if(imaginario <= eps)
+        return 1;
+    else 
+        return 0;
+}
+
+int verificaApenasImaginario(Complexo_pt numComplexo){
+    double real;
+
+    real = *numComplexo->imag;
+
+    if(real <= eps)
+        return 1;
+    else 
+        return 0;
+}
+
+int comparaNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+    double modulo1, modulo2;
+    modulo1 = calculaModulo(numComplexo1);
+    modulo2 = calculaModulo(numComplexo2);
+
+//verificar se essa logica esta correta
+    if(modulo1 == modulo2 && fabs(modulo1-modulo2) <= eps)
+        return 0;
+    if(modulo1 < modulo2 && fabs(modulo1-modulo2) <= eps)
+        return -1;
+    if(modulo1 > modulo2 && fabs(modulo1-modulo2) <= eps)
+        return 1;
 }
 
 

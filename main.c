@@ -8,19 +8,27 @@
 int main(){
     double imag;
     double real;
-    Complexo_pt numero1, numero2, resultado;
+    Complexo_pt numero1, numero2;
+    int resultado;
 
-    numero1 = criaComplexo(2, 3);
+    numero1 = criaComplexo(1, 0.0000009);
     numero2 = criaComplexo(5, 8);
 
-    resultado = converteDoubleParaLongInt(numero1);
+    resultado = comparaNumeros(numero1, numero2);
 
-    printf("%f\n", *retornaReal(numero1));
-    printf("%f\n", *retornaImaginario(numero1));
+    if(resultado == 1)
+        printf("2 maior\n");
+    if(resultado == 0)
+        printf("I\n");
+    if(resultado == -1)
+        printf("1 maior\n");
+
+    //printf("%f\n", *retornaReal(resultado));
+    //printf("%f\n", *retornaImaginario(resultado));
 
     destroiComplexo(numero1);
     destroiComplexo(numero2);
-    destroiComplexo(resultado);
+    //destroiComplexo(resultado);
 
 
 
