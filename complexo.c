@@ -225,13 +225,35 @@ Complexo_pt divideComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
         printf("Memória insuficiente!\n");
 		exit(1);
     }
+    
     *resultado->real = (*numComplexo1->real * *numComplexo2->real) + (*numComplexo1->imag * *numComplexo2->imag);
     *resultado->imag = (*numComplexo1->real * *numComplexo2->imag) + (*numComplexo1->imag * *numComplexo2->real);
 
     denominador = (*numComplexo2->real * *numComplexo2->real) + (*numComplexo2->imag * *numComplexo2->imag);
-
+    if(denominador == 0){
+        printf("Nao e possivel realizar a divisao\n");
+        exit(1);
+    }
     *resultado->real = *resultado->real / denominador;
     *resultado->imag = *resultado->imag / denominador;
+
+    return resultado;
+}
+
+Complexo_pt multiplicaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+    Complexo_pt resultado = (Complexo_t*) malloc(sizeof(Complexo_t));
+    if(resultado == NULL){
+        printf("Memória insuficiente!\n");
+		exit(1);
+    }
+    resultado->real = (double*) malloc(sizeof(double));
+    resultado->imag = (double*) malloc(sizeof(double));
+    if(resultado->real == NULL || resultado->imag == NULL){
+        printf("Memória insuficiente!\n");
+		exit(1);
+    }
+    *resultado->real = (*numComplexo1->real * *numComplexo2->real) + (*numComplexo1->imag * *numComplexo2->imag * (-1));
+    *resultado->imag = (*numComplexo1->real * *numComplexo2->imag) + (*numComplexo1->imag * *numComplexo2->real);
 
     return resultado;
 }

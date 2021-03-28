@@ -55,4 +55,6 @@ Complexo_pt somaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 Complexo_pt subtraiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
 Complexo_pt divideComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+
+Complexo_pt multiplicaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 #endif

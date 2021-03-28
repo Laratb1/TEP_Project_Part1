@@ -11,10 +11,10 @@ int main(){
     Complexo_pt numero1, numero2;
     Complexo_pt resultado;
 
-    numero1 = criaComplexo(1000000000, 577350269);
-    numero2 = criaComplexo(2, 2);
+    numero1 = criaComplexo(1, 2);
+    numero2 = criaComplexo(2, 3);
 
-    resultado = subtraiComplexo(numero1, numero2);
+    resultado = divideComplexo(numero1, numero2);
 
     /*if(resultado == 1)
         printf("V\n");
