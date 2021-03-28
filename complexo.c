@@ -55,7 +55,10 @@ Complexo_pt atribuiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
 
 Complexo_pt copiaComplexo(Complexo_pt numero){
     Complexo_pt numComplexo = (Complexo_t*) malloc(sizeof(Complexo_t));
-
+    if(numComplexo == NULL){
+        printf("Memória insuficiente!\n");
+		exit(1);
+    }
     numComplexo->real = numero->real;
     numComplexo->imag = numero->imag;
 
@@ -86,43 +89,24 @@ Complexo_pt converteLongIntPataRacional(Complexo_pt numComplexo){
 
 }
 
-double calculaModulo(Complexo_pt numComplexo){
-    double modulo, real, imaginario;
-
-    real = *numComplexo->real;
-    imaginario = *numComplexo->imag;
-
-    modulo = sqrt(pow(real, 2) + pow(imaginario, 2));
-
-    return modulo;
-}
-
 int verificaModuloZero(Complexo_pt numComplexo){    
   
     //isso aqui que e para fazer com o eps?
-    if(calculaModulo(numComplexo) <= eps)
+    if(retornaMagnitude(numComplexo) <= eps)
         return 1;
     else 
         return 0;
 }
 
 int verificaApenasReal(Complexo_pt numComplexo){
-    double imaginario;
-
-    imaginario = *numComplexo->imag;
-
-    if(imaginario <= eps)
+    if(*numComplexo->imag <= eps)
         return 1;
     else 
         return 0;
 }
 
 int verificaApenasImaginario(Complexo_pt numComplexo){
-    double real;
-
-    real = *numComplexo->imag;
-
-    if(real <= eps)
+    if(*numComplexo->real <= eps)
         return 1;
     else 
         return 0;
@@ -130,8 +114,8 @@ int verificaApenasImaginario(Complexo_pt numComplexo){
 
 int comparaModuloNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
     double modulo1, modulo2;
-    modulo1 = calculaModulo(numComplexo1);
-    modulo2 = calculaModulo(numComplexo2);
+    modulo1 = retornaMagnitude(numComplexo1);
+    modulo2 = retornaMagnitude(numComplexo2);
 
 //verificar se essa logica esta correta
     if(fabs(modulo1-modulo2) > eps){
@@ -147,15 +131,9 @@ int comparaModuloNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
 
 int comparaAngulosNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
     double angulo1, angulo2;
-    double imag1, imag2, real1, real2;
 
-    imag1 = *numComplexo1->imag;
-    real1 = *numComplexo1->real;
-    imag2 = *numComplexo2->imag;
-    real2 = *numComplexo2->real;
-
-    angulo1 = atan(imag1 / real1);
-    angulo2 = atan(imag2 / real2);
+    angulo1 = retornaFase(numComplexo1);
+    angulo2 = retornaFase(numComplexo2); 
 
     if(fabs(angulo1-angulo2) > eps){
         if(angulo1 < angulo2)
@@ -167,8 +145,48 @@ int comparaAngulosNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
         return 0;
 }
 
+double retornaMagnitude(Complexo_pt numComplexo){
+    double modulo, real, imaginario;
 
+    real = *numComplexo->real;
+    imaginario = *numComplexo->imag;
 
+    modulo = sqrt(pow(real, 2) + pow(imaginario, 2));
+
+    return modulo;
+}
+
+double retornaFase(Complexo_pt numComplexo){
+    double angulo;
+
+    angulo = atan(*numComplexo->imag / *numComplexo->real);
+
+    return angulo * 57.295779513;    
+}
+
+void atribuiNovoValorReal(Complexo_pt numComplexo, double novoValor){
+    *numComplexo->real = novoValor;
+}
+
+void atribuiNovoValorImaginario(Complexo_pt numComplexo, double novoValor){
+    *numComplexo->imag = novoValor;
+}
+
+double retornaConjugado(Complexo_pt numComplexo){
+    return *numComplexo->imag *= -1;
+}
+
+Complexo_pt somaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+    Complexo_pt resultado = (Complexo_t*) malloc(sizeof(Complexo_t));
+    if(resultado == NULL){
+        printf("Memória insuficiente!\n");
+		exit(1);
+    }
+    *resultado->real = *numComplexo1->real + *numComplexo2->real;
+    *resultado->imag = *numComplexo1->imag + *numComplexo2->imag;
+
+    return resultado;
+}
 //#endif
 //#endif
 //#endif

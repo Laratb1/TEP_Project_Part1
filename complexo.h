@@ -28,8 +28,6 @@ Complexo_pt converteRacionalParaLongInt(Complexo_pt numComplexo);
 
 Complexo_pt converteLongIntPataRacional(Complexo_pt numComplexo);
 
-double calculaModulo(Complexo_pt numComplexo); //nova
-
 int verificaModuloZero(Complexo_pt numComplexo);
 
 int verificaApenasReal(Complexo_pt numComplexo);
@@ -39,4 +37,18 @@ int verificaApenasImaginario(Complexo_pt numComplexo);
 int comparaModuloNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
 int comparaAngulosNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+
+double retornaMagnitude(Complexo_pt numComplexo); 
+
+double retornaFase(Complexo_pt numComplexo);
+
+void atribuiNovoValorReal(Complexo_pt numComplexo, double novoValor);
+
+void atribuiNovoValorImaginario(Complexo_pt numComplexo, double novoValor);
+
+void atribuiNovoValorModulo(Complexo_pt numComplexo, double novoImag, double novoReal);
+
+double retornaConjugado(Complexo_pt numComplexo);
+
+Complexo_pt somaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 #endif
