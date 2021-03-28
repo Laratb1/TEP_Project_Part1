@@ -258,6 +258,42 @@ Complexo_pt multiplicaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo
     return resultado;
 }
 
+Complexo_pt acumulaSomando(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+    *numComplexo1->real += *numComplexo1->real + *numComplexo2->real;
+    *numComplexo1->imag += *numComplexo1->imag + *numComplexo2->imag;
+
+    return numComplexo1;
+}
+
+Complexo_pt acumulaMultiplicando(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+    *numComplexo1->real *= (*numComplexo1->real * *numComplexo2->real) + (*numComplexo1->imag * *numComplexo2->imag * (-1));
+    *numComplexo1->imag *= (*numComplexo1->real * *numComplexo2->imag) + (*numComplexo1->imag * *numComplexo2->real);
+
+    return numComplexo1;
+}
+
+Complexo_pt operacaoComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2, char operacao[3]){
+    switch(operacao){
+        case '+':
+            return somaComplexo(numComplexo1, numComplexo2);
+            break;
+        case '-':
+            return subtraiComplexo(numComplexo1, numComplexo2);
+            break;
+        case '*':
+            return multiplicaComplexo(numComplexo1, numComplexo2);
+            break;
+        case '/':
+            return divideComplexo(numComplexo1, numComplexo2);
+            break;
+        case '+=':
+            return acumulaSomando(numComplexo1, numComplexo2);
+            break;
+        case '*=':
+            return acumulaMultiplicando(numComplexo1, numComplexo2);
+            break;
+    }
+}
 //#endif
 //#endif
 //#endif

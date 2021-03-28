@@ -57,4 +57,11 @@ Complexo_pt subtraiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 Complexo_pt divideComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
 Complexo_pt multiplicaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+
+Complexo_pt acumulaSomando(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+
+Complexo_pt acumulaMultiplicando(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+
+Complexo_pt operacaoComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2, char operacao[3]);
+
 #endif

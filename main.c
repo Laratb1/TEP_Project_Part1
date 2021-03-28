@@ -12,9 +12,9 @@ int main(){
     Complexo_pt resultado;
 
     numero1 = criaComplexo(1, 2);
-    numero2 = criaComplexo(2, 3);
+    numero2 = criaComplexo(3, 4);
 
-    resultado = divideComplexo(numero1, numero2);
+    resultado = operacaoComplexo(numero1, numero2, "+");
 
     /*if(resultado == 1)
         printf("V\n");
