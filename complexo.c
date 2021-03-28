@@ -182,11 +182,60 @@ Complexo_pt somaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
         printf("Memória insuficiente!\n");
 		exit(1);
     }
+    resultado->real = (double*) malloc(sizeof(double));
+    resultado->imag = (double*) malloc(sizeof(double));
+    if(resultado->real == NULL || resultado->imag == NULL){
+        printf("Memória insuficiente!\n");
+		exit(1);
+    }
     *resultado->real = *numComplexo1->real + *numComplexo2->real;
-    *resultado->imag = *numComplexo1->imag + *numComplexo2->imag;
+    *resultado->imag = *numComplexo1->imag + *numComplexo2->imag;;
 
     return resultado;
 }
+
+Complexo_pt subtraiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+    Complexo_pt resultado = (Complexo_t*) malloc(sizeof(Complexo_t));
+    if(resultado == NULL){
+        printf("Memória insuficiente!\n");
+		exit(1);
+    }
+    resultado->real = (double*) malloc(sizeof(double));
+    resultado->imag = (double*) malloc(sizeof(double));
+    if(resultado->real == NULL || resultado->imag == NULL){
+        printf("Memória insuficiente!\n");
+		exit(1);
+    }
+    *resultado->real = *numComplexo1->real - *numComplexo2->real;
+    *resultado->imag = *numComplexo1->imag - *numComplexo2->imag;;
+
+    return resultado;
+}
+
+Complexo_pt divideComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
+    double denominador;
+    Complexo_pt resultado = (Complexo_t*) malloc(sizeof(Complexo_t));
+    if(resultado == NULL){
+        printf("Memória insuficiente!\n");
+		exit(1);
+    }
+    resultado->real = (double*) malloc(sizeof(double));
+    resultado->imag = (double*) malloc(sizeof(double));
+    if(resultado->real == NULL || resultado->imag == NULL){
+        printf("Memória insuficiente!\n");
+		exit(1);
+    }
+    *resultado->real = (*numComplexo1->real * *numComplexo2->real) + (*numComplexo1->imag * *numComplexo2->imag);
+    *resultado->imag = (*numComplexo1->real * *numComplexo2->imag) + (*numComplexo1->imag * *numComplexo2->real);
+
+    denominador = (*numComplexo2->real * *numComplexo2->real) + (*numComplexo2->imag * *numComplexo2->imag);
+
+    *resultado->real = *resultado->real / denominador;
+    *resultado->imag = *resultado->imag / denominador;
+
+    return resultado;
+}
+
 //#endif
 //#endif
 //#endif
