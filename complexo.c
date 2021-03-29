@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <math.h> 
+#include <string.h>
 #include "complexo.h"
 
 typedef struct Complexo_st{
@@ -272,8 +273,10 @@ Complexo_pt acumulaMultiplicando(Complexo_pt numComplexo1, Complexo_pt numComple
     return numComplexo1;
 }
 
-Complexo_pt operacaoComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2, char operacao[3]){
-    switch(operacao){
+Complexo_pt operacaoComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2, char *operacao){
+    operacao = (char*) malloc(3 * sizeof(char));
+    
+    switch(*operacao){
         case '+':
             return somaComplexo(numComplexo1, numComplexo2);
             break;
