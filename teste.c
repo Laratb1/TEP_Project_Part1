@@ -4,22 +4,22 @@
 
 int main(){
     Racional_pt numero1, numero2, resultado2;
-    double resultado1 = 0.125;
+    int resultado1;
     resultado2 = (Racional_t*) malloc(sizeof(Racional_pt));
 
-    numero1 = criaNumRacional(5, 3);
+    numero1 = criaNumRacional(9, 1000000);
     numero2 = criaNumRacional(1, 2);
 
-    resultado2 = obtemRacionalEntreIntervalos();
+    resultado1 = verificaRacionalConverteEmInteiro(numero1);
 
-    printf("%ld\n", retornaNum(resultado2));
-    printf("%ld\n", retornaDen(resultado2));
+    //printf("%ld\n", retornaNum(resultado2));
+    //printf("%ld\n", retornaDen(resultado2));
 
-    //printf("%ld\n", resultado2);
+    printf("%d\n", resultado1);
 
     destroiNum(numero1);
     destroiNum(numero2);
-    destroiNum(resultado2);
+    //destroiNum(resultado2);
 
     return 0;
 }

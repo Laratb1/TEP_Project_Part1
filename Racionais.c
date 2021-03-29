@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "Racionais.h"
+#define eps 0.00001
 
 typedef struct Racional_st{
     long int num;
@@ -185,9 +186,15 @@ Racional_pt converteRealEmRacional(double numReal){
     }
 }
 
-int verificaRacionalConverteEmInteiro( Racional_t numRacional){
-
+int verificaRacionalConverteEmInteiro(Racional_pt numRacional){
+    long double numero;
+    numero = numRacional->num / numRacional->den;
+    if((numero - ((int)numero)) < eps)
+        return 1;
+    else
+        return 0;
 }
+
 // atencao utilizacao da funcao converteRealEmRacional 
 Racional_pt obtemRacionalEntreIntervalos(){
     Racional_pt numRacional = (Racional_t*) malloc(sizeof(Racional_t));
