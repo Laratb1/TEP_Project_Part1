@@ -1,5 +1,5 @@
 /*#ifdef TIPADO_ 
-#ifdef DESTE_TIPO_ double
+#ifdef DESTE_TIPO_ 
 #ifdef DESTE_FORMATO_ */
 #include <stdio.h>
 #include <stdlib.h> 
@@ -66,12 +66,18 @@ Complexo_pt copiaComplexo(Complexo_pt numero){
     return numComplexo;
 }
 
+//VERIFICAR SE PODE ISSO 
 Complexo_pt converteDoubleParaLongInt(Complexo_pt numComplexo){
+    *numComplexo->real = round(*numComplexo->real);
+    *numComplexo->imag = round(*numComplexo->imag);
 
+    return numComplexo;
 }
 
+//CERTEZA QUE ISSO NAO VAI DAR CERTO 
 Complexo_pt converteLongIntParaDouble(Complexo_pt numComplexo){
-
+    *numComplexo->real = (double) *numComplexo->real;
+    *numComplexo->imag = (double) *numComplexo->imag;
 }
 
 Complexo_pt converteDoubleParaRacional(Complexo_pt numComplexo){
@@ -273,9 +279,9 @@ Complexo_pt acumulaMultiplicando(Complexo_pt numComplexo1, Complexo_pt numComple
     return numComplexo1;
 }
 
-Complexo_pt operacaoComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2, char *operacao){
+/*Complexo_pt operacaoComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2, char *operacao){
     operacao = (char*) malloc(3 * sizeof(char));
-    
+
     switch(*operacao){
         case '+':
             return somaComplexo(numComplexo1, numComplexo2);
@@ -296,7 +302,7 @@ Complexo_pt operacaoComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2,
             return acumulaMultiplicando(numComplexo1, numComplexo2);
             break;
     }
-}
+}*/
 //#endif
 //#endif
 //#endif

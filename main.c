@@ -1,24 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "vetor_double.h"
-#include "vetor_int.h"
-#include "vetor_complexo.h"
+#include "complexo_double.h"
+#include "complexo_long_int.h"
+#include "complexo_racional.h"
 
 int main(){
-    int n, N, i;
-    double elementos[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26};
-    double *pv = elementos; 
-    Vetor_pt vetor1, veotr2;
+    double imag;
+    double real;
+    Complexo_pt numero1, numero2;
+    Complexo_pt resultado;
 
-    vetor1 = criaVetor(26, 0, pv);
+    numero1 = criaComplexo(1.5787, 2.7643);
+    numero2 = criaComplexo(3, 4);
 
-    for(int i = 0; i < 5; i++){
-        printf("%f ", retornaElementos(vetor1, i));
-    }
+    resultado = converteDoubleParaLongInt(numero1);
 
-    destroiVetor(vetor1);
+    /*if(resultado == 1)
+        printf("V\n");
+    if(resultado == 0)
+        printf("F\n");
+    if(resultado == -1)
+        printf("2 maior\n");*/
+        
+    printf("%f\n", *retornaReal(resultado));
+    printf("%f\n", *retornaImaginario(resultado));
+
+    //printf("%f\n", resultado);
+
+    destroiComplexo(numero1);
+    destroiComplexo(numero2);
+    destroiComplexo(resultado);
 
 
-    return 0; 
+
+    return 0;
 }
+
+//valgrind --leak-check=yes ./a.out
