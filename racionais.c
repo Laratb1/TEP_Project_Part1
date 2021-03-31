@@ -18,12 +18,12 @@ Racional_pt criaNumRacional(long int numerador, long int denominador){
 		exit(1);
     }
     numRacional->num = numerador;
-    if(denominador == 0)
+    numRacional->den = denominador;
+    
+    if(verificaDenominadorZero(numRacional) == 1)
         printf("Nao Existe");
     else
-        numRacional->den = denominador;
-
-    return numRacional;
+        return numRacional;
 }
 
 long int retornaDen(Racional_pt numero){
