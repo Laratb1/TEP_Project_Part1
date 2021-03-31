@@ -1,21 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Racionais.h"
+#include "racionais.h"
 
 int main(){
     Racional_pt numero1, numero2, resultado2;
     int resultado1;
     resultado2 = (Racional_t*) malloc(sizeof(Racional_pt));
 
-    numero1 = criaNumRacional(9, 1000000);
+    numero1 = criaNumRacional(3, 2);
     numero2 = criaNumRacional(1, 2);
 
-    resultado1 = verificaRacionalConverteEmInteiro(numero1);
+    resultado2 = raizQuadrada(numero1);
 
-    //printf("%ld\n", retornaNum(resultado2));
-    //printf("%ld\n", retornaDen(resultado2));
+    printf("%ld\n", retornaNum(resultado2));
+    printf("%ld\n", retornaDen(resultado2));
 
-    printf("%d\n", resultado1);
+    //printf("%d\n", resultado1);
 
     destroiNum(numero1);
     destroiNum(numero2);

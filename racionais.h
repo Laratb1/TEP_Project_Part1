@@ -38,7 +38,7 @@ Racional_pt divideRacionais(Racional_pt valor1, Racional_pt valor2);
 
 Racional_pt elevaAoQuadrado(Racional_pt valor);
 
-Racional_pt raizQuadrada(Racional_pt valor);
+Racional_pt raizQuadrada(Racional_pt numRacional);
 
 double converteRacionalEmReal(Racional_pt numRacional);
 

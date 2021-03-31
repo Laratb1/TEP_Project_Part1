@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "Racionais.h"
+#include "racionais.h"
 #define eps 0.00001
 
 typedef struct Racional_st{
@@ -154,12 +154,14 @@ Racional_pt elevaAoQuadrado(Racional_pt valor){
     return valor;
 }
 
-Racional_pt raizQuadrada(Racional_pt valor){
-// por que isso imprime um inteiro e nao um double????
-    valor->num = (long double) sqrt(valor->num);
-    valor->den = (long double) sqrt(valor->den);
+Racional_pt raizQuadrada(Racional_pt numRacional){
+    long double numerador, denominador, resultado;
 
-    return valor;
+    numerador = sqrt(numRacional->num);
+    denominador = sqrt(numRacional->den);
+    resultado = numerador / denominador;
+
+    return converteRealEmRacional(resultado);
 }
 
 double converteRacionalEmReal(Racional_pt numRacional){
@@ -173,12 +175,12 @@ double converteRacionalEmReal(Racional_pt numRacional){
 Racional_pt converteRealEmRacional(double numReal){
     Racional_pt numRacional = (Racional_t*) malloc(sizeof(Racional_t));
     long int numerador, denominador;
-    double erro;
+    long double erro;
 
     for(numerador = 1; numerador < 1000000; numerador++){
         denominador = numerador / numReal + 0.5;
         erro = fabs(1.0-numerador/(denominador*numReal));
-        if(erro <= 0.0000000001){
+        if(erro <= 0.00000000000000001){
             numRacional->num = numerador;
             numRacional->den = denominador;
             return numRacional;
