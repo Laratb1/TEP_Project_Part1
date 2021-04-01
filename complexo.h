@@ -4,13 +4,15 @@
 
 typedef struct Complexo_st *Complexo_pt;
 
-Complexo_pt criaComplexo (double numReal, double numImag);
+Complexo_pt criaComplexo(TIPO_ numReal, TIPO_ numImag);
 
 void destroiComplexo (Complexo_pt numComplexo);
 
-double *retornaReal (Complexo_pt numComplexo);
+TIPO_ *retornaReal (Complexo_pt numComplexo);
 
-double *retornaImaginario (Complexo_pt numComplexo);
+TIPO_ *retornaImaginario (Complexo_pt numComplexo);
+
+void imprimeComplexo(Complexo_pt numComplexo);
 
 Complexo_pt atribuiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
@@ -38,17 +40,17 @@ int comparaModuloNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
 int comparaAngulosNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
-double retornaMagnitude(Complexo_pt numComplexo); 
+long double retornaMagnitude(Complexo_pt numComplexo); 
 
-double retornaFase(Complexo_pt numComplexo);
+long double retornaFase(Complexo_pt numComplexo);
 
-void atribuiNovoValorReal(Complexo_pt numComplexo, double novoValor);
+void atribuiNovoValorReal(Complexo_pt numComplexo, TIPO_ novoValor);
 
-void atribuiNovoValorImaginario(Complexo_pt numComplexo, double novoValor);
+void atribuiNovoValorImaginario(Complexo_pt numComplexo, TIPO_ novoValor);
 
-void atribuiNovoValorModulo(Complexo_pt numComplexo, double novoImag, double novoReal);
+void atribuiNovoValorModulo(Complexo_pt numComplexo, TIPO_ novoImag, TIPO_ novoReal);
 
-double retornaConjugado(Complexo_pt numComplexo);
+TIPO_ retornaConjugado(Complexo_pt numComplexo);
 
 Complexo_pt somaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
  

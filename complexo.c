@@ -8,18 +8,18 @@
 #include "complexo.h"
 
 typedef struct Complexo_st{
-	double *real;
-    double *imag;
-}Complexo_t;
+	TIPO_ *real;
+    TIPO_ *imag;
+} Complexo_t;
 
-Complexo_pt criaComplexo (double numReal, double numImag){
+Complexo_pt TIPADO_(criaComplexo) (TIPO_ numReal, TIPO_ numImag){
     Complexo_pt numComplexo = (Complexo_t*) malloc(sizeof(Complexo_t));
     if(numComplexo == NULL){
         printf("Memória insuficiente!\n");
 		exit(1);
     }
-    numComplexo->real = (double*) malloc(sizeof(double));
-    numComplexo->imag = (double*) malloc(sizeof(double));
+    numComplexo->real = (TIPO_*) malloc(sizeof(TIPO_));
+    numComplexo->imag = (TIPO_*) malloc(sizeof(TIPO_));
     if(numComplexo->real == NULL || numComplexo->imag == NULL){
         printf("Memória insuficiente!\n");
 		exit(1);
@@ -39,12 +39,19 @@ void destroiComplexo (Complexo_pt numComplexo){
     numComplexo = NULL;   
 }
 
-double *retornaReal (Complexo_pt numComplexo){
+TIPO_ *retornaReal (Complexo_pt numComplexo){
     return numComplexo->real;
 }
 
-double *retornaImaginario (Complexo_pt numComplexo){
+TIPO_ *retornaImaginario (Complexo_pt numComplexo){
     return numComplexo->imag;
+}
+
+void imprimeComplexo(Complexo_pt numComplexo){
+    char formato[10] = " ";
+	strcat(formato, FORMATO_);
+	strcat(formato, " ");
+    printf("formato + formatoI\n", *retornaReal(numComplexo), *retornaImaginario(numComplexo));
 }
 
 Complexo_pt atribuiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
@@ -76,8 +83,7 @@ Complexo_pt converteDoubleParaLongInt(Complexo_pt numComplexo){
 
 //CERTEZA QUE ISSO NAO VAI DAR CERTO 
 Complexo_pt converteLongIntParaDouble(Complexo_pt numComplexo){
-    *numComplexo->real = (double) *numComplexo->real;
-    *numComplexo->imag = (double) *numComplexo->imag;
+    
 }
 
 Complexo_pt converteDoubleParaRacional(Complexo_pt numComplexo){
@@ -120,7 +126,7 @@ int verificaApenasImaginario(Complexo_pt numComplexo){
 }
 
 int comparaModuloNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
-    double modulo1, modulo2;
+    long double modulo1, modulo2;
     modulo1 = retornaMagnitude(numComplexo1);
     modulo2 = retornaMagnitude(numComplexo2);
 
@@ -137,7 +143,7 @@ int comparaModuloNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
 }
 
 int comparaAngulosNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
-    double angulo1, angulo2;
+    long double angulo1, angulo2;
 
     angulo1 = retornaFase(numComplexo1);
     angulo2 = retornaFase(numComplexo2); 
@@ -152,7 +158,7 @@ int comparaAngulosNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
         return 0;
 }
 
-double retornaMagnitude(Complexo_pt numComplexo){
+long double retornaMagnitude(Complexo_pt numComplexo){
     double modulo, real, imaginario;
 
     real = *numComplexo->real;
@@ -163,7 +169,7 @@ double retornaMagnitude(Complexo_pt numComplexo){
     return modulo;
 }
 
-double retornaFase(Complexo_pt numComplexo){
+long double retornaFase(Complexo_pt numComplexo){
     double angulo;
 
     angulo = atan(*numComplexo->imag / *numComplexo->real);
@@ -171,15 +177,20 @@ double retornaFase(Complexo_pt numComplexo){
     return angulo * 57.295779513;    
 }
 
-void atribuiNovoValorReal(Complexo_pt numComplexo, double novoValor){
+void atribuiNovoValorReal(Complexo_pt numComplexo, TIPO_ novoValor){
     *numComplexo->real = novoValor;
 }
 
-void atribuiNovoValorImaginario(Complexo_pt numComplexo, double novoValor){
+void atribuiNovoValorImaginario(Complexo_pt numComplexo, TIPO_ novoValor){
     *numComplexo->imag = novoValor;
 }
 
-double retornaConjugado(Complexo_pt numComplexo){
+// COMO FAZER ISSO 
+void atribuiNovoValorModulo(Complexo_pt numComplexo, TIPO_ novoImag, TIPO_ novoReal){
+
+}
+
+TIPO_ retornaConjugado(Complexo_pt numComplexo){
     return *numComplexo->imag *= -1;
 }
 
@@ -189,8 +200,8 @@ Complexo_pt somaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
         printf("Memória insuficiente!\n");
 		exit(1);
     }
-    resultado->real = (double*) malloc(sizeof(double));
-    resultado->imag = (double*) malloc(sizeof(double));
+    resultado->real = (TIPO_*) malloc(sizeof(TIPO_));
+    resultado->imag = (TIPO_*) malloc(sizeof(TIPO_));
     if(resultado->real == NULL || resultado->imag == NULL){
         printf("Memória insuficiente!\n");
 		exit(1);
@@ -207,8 +218,8 @@ Complexo_pt subtraiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
         printf("Memória insuficiente!\n");
 		exit(1);
     }
-    resultado->real = (double*) malloc(sizeof(double));
-    resultado->imag = (double*) malloc(sizeof(double));
+    resultado->real = (TIPO_*) malloc(sizeof(TIPO_));
+    resultado->imag = (TIPO_*) malloc(sizeof(TIPO_));
     if(resultado->real == NULL || resultado->imag == NULL){
         printf("Memória insuficiente!\n");
 		exit(1);
@@ -220,14 +231,14 @@ Complexo_pt subtraiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
 }
 
 Complexo_pt divideComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2){
-    double denominador;
+    TIPO_ denominador;
     Complexo_pt resultado = (Complexo_t*) malloc(sizeof(Complexo_t));
     if(resultado == NULL){
         printf("Memória insuficiente!\n");
 		exit(1);
     }
-    resultado->real = (double*) malloc(sizeof(double));
-    resultado->imag = (double*) malloc(sizeof(double));
+    resultado->real = (TIPO_*) malloc(sizeof(TIPO_));
+    resultado->imag = (TIPO_*) malloc(sizeof(TIPO_));
     if(resultado->real == NULL || resultado->imag == NULL){
         printf("Memória insuficiente!\n");
 		exit(1);
@@ -253,8 +264,8 @@ Complexo_pt multiplicaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo
         printf("Memória insuficiente!\n");
 		exit(1);
     }
-    resultado->real = (double*) malloc(sizeof(double));
-    resultado->imag = (double*) malloc(sizeof(double));
+    resultado->real = (TIPO_*) malloc(sizeof(TIPO_));
+    resultado->imag = (TIPO_*) malloc(sizeof(TIPO_));
     if(resultado->real == NULL || resultado->imag == NULL){
         printf("Memória insuficiente!\n");
 		exit(1);
