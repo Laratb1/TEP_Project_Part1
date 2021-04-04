@@ -132,3 +132,23 @@ double valorDeMaiorModulo(Vetor_pt vetor){
     }
     return maior;
 }
+
+double valorDeMenorModulo(Vetor_pt vetor){
+
+} //milla
+
+int quantElementosDeValorV(Vetor_pt vetor, double valor){
+    int quant;
+    for(int c = 0; c < vetor->n; c++){
+        // verificar eps
+        if(vetor->elementos[c] == valor || fabs(vetor->elementos[c]-valor) < eps){
+            quant++;
+        }
+    }
+    return quant;
+}
+
+double retornaVetorComPosicoesQueTemV(Vetor_pt vetor){
+    
+} //milla
+

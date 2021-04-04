@@ -1,5 +1,6 @@
 #ifndef COMPLEXO_H
 #define COMPLEXO_H
+#define eps 0.00001
 
 typedef struct Vetor_st *Vetor_pt;
 
@@ -41,4 +42,11 @@ Vetor_pt eliminaElementoDePosicaoI(Vetor_pt vetor, int indice);
 Vetor_pt eliminaTodosElementos(Vetor_pt vetor); //milla
 
 double valorDeMaiorModulo(Vetor_pt vetor);
+
+double valorDeMenorModulo(Vetor_pt vetor); //milla
+
+//trocar double
+int quantElementosDeValorV(Vetor_pt vetor, double valor);
+
+double retornaVetorComPosicoesQueTemV(Vetor_pt vetor); //milla
 #endif
