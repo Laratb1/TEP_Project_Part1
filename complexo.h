@@ -14,7 +14,7 @@ TIPO_ *retornaImaginario (Complexo_pt numComplexo);
 
 void imprimeComplexo(Complexo_pt numComplexo);
 
-Complexo_pt atribuiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+void atribuiComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
 Complexo_pt copiaComplexo(Complexo_pt numero);
 
@@ -30,6 +30,10 @@ Complexo_pt converteRacionalParaLongInt(Complexo_pt numComplexo);
 
 Complexo_pt converteLongIntPataRacional(Complexo_pt numComplexo);
 
+long double retornaMagnitude(Complexo_pt numComplexo); 
+
+long double retornaFase(Complexo_pt numComplexo);
+
 int verificaModuloZero(Complexo_pt numComplexo);
 
 int verificaApenasReal(Complexo_pt numComplexo);
@@ -40,15 +44,13 @@ int comparaModuloNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
 int comparaAngulosNumeros(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
-long double retornaMagnitude(Complexo_pt numComplexo); 
-
-long double retornaFase(Complexo_pt numComplexo);
-
 void atribuiNovoValorReal(Complexo_pt numComplexo, TIPO_ novoValor);
 
 void atribuiNovoValorImaginario(Complexo_pt numComplexo, TIPO_ novoValor);
 
-void atribuiNovoValorModulo(Complexo_pt numComplexo, TIPO_ novoImag, TIPO_ novoReal);
+void atribuiNovoValorModulo(TIPO_ numComplexo, TIPO_ novoModulo);
+
+void atribuiNovoValorAngulo(TIPO_ numComplexo, TIPO_ novoAngulo);
 
 TIPO_ retornaConjugado(Complexo_pt numComplexo);
 
@@ -60,9 +62,9 @@ Complexo_pt divideComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
 Complexo_pt multiplicaComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
-Complexo_pt acumulaSomando(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+void acumulaSomando(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
-Complexo_pt acumulaMultiplicando(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
+void acumulaMultiplicando(Complexo_pt numComplexo1, Complexo_pt numComplexo2);
 
 Complexo_pt operacaoComplexo(Complexo_pt numComplexo1, Complexo_pt numComplexo2, char *operacao);
 
