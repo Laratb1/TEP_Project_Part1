@@ -154,7 +154,7 @@ Racional_pt elevaAoQuadrado(Racional_pt valor){
     return valor;
 }
 
-Racional_pt raizQuadrada(Racional_pt numRacional){
+Racional_pt raizNumRacional(Racional_pt numRacional){
     long double numerador, denominador, resultado;
 
     numerador = sqrt(numRacional->num);
