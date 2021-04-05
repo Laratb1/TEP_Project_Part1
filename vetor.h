@@ -73,3 +73,4 @@ double desvioPadrao (Vetor_pt vetor); // milla
 double medianaVetor (Vetor_pt vetor); // lara
 
 #endif
+//lara
