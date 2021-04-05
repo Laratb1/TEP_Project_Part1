@@ -39,11 +39,9 @@ void destroiNum(Racional_pt numRacional){
     numRacional = NULL;
 }
 
-Racional_pt copiaNumRacional(Racional_pt num1, Racional_pt num2){
+void copiaNumRacional(Racional_pt num1, Racional_pt num2){
     num1->num = num2->num;
     num1->den = num2->den;
-
-    return num1;
 }
 
 int comparaNumeros(Racional_pt valor1, Racional_pt valor2){
@@ -97,7 +95,8 @@ int verificaAmbosZero(Racional_pt numRacional){
 }
 
 Racional_pt somaRacionais(Racional_pt valor1, Racional_pt valor2){
-    Racional_pt resultado = (Racional_t*) malloc(sizeof(Racional_t));
+    Racional_pt resultado;
+    resultado = criaNumRacional(0, 0);
 
     resultado->num = (valor1->num * valor2->den) + (valor1->den * valor2->num);
     resultado->den = (valor1->den * valor2->den);
@@ -105,16 +104,15 @@ Racional_pt somaRacionais(Racional_pt valor1, Racional_pt valor2){
     return resultado;
 }
 
-Racional_pt acumulaRacional(Racional_pt valor1, Racional_pt valor2){
+void acumulaRacional(Racional_pt valor1, Racional_pt valor2){
 
     valor1->num = (valor1->num * valor2->den) + (valor1->den * valor2->num);
     valor1->den = (valor1->den * valor2->den);
-
-    return valor1;
 }
 
 Racional_pt subtraiRacionais(Racional_pt valor1, Racional_pt valor2){
-    Racional_pt resultado = (Racional_t*) malloc(sizeof(Racional_t));
+    Racional_pt resultado;
+    resultado = criaNumRacional(0, 0);
 
     resultado->num = (valor1->num * valor2->den) - (valor1->den * valor2->num);
     resultado->den = (valor1->den * valor2->den);
@@ -123,7 +121,8 @@ Racional_pt subtraiRacionais(Racional_pt valor1, Racional_pt valor2){
 }
 
 Racional_pt multiplicaRacionais(Racional_pt valor1, Racional_pt valor2){
-    Racional_pt resultado = (Racional_t*) malloc(sizeof(Racional_t));
+    Racional_pt resultado;
+    resultado = criaNumRacional(0, 0);
 
     resultado->num = (valor1->num * valor2->num);
     resultado->den = (valor1->den * valor2->den);
@@ -131,15 +130,14 @@ Racional_pt multiplicaRacionais(Racional_pt valor1, Racional_pt valor2){
     return resultado;
 }
 
-Racional_pt acumulaMultiplicacaoRacionais(Racional_pt valor1, Racional_pt valor2){
+void acumulaMultiplicacaoRacionais(Racional_pt valor1, Racional_pt valor2){
     valor1->num *= valor2->num;
     valor1->den *= valor2->den;
-
-    return valor1;
 }
 
 Racional_pt divideRacionais(Racional_pt valor1, Racional_pt valor2){
-    Racional_pt resultado = (Racional_t*) malloc(sizeof(Racional_t));
+    Racional_pt resultado;
+    resultado = criaNumRacional(0, 0);
 
     resultado->num = (valor1->num * valor2->den);
     resultado->den = (valor1->den * valor2->num);
@@ -148,20 +146,11 @@ Racional_pt divideRacionais(Racional_pt valor1, Racional_pt valor2){
 }
 
 Racional_pt elevaAoQuadrado(Racional_pt valor){
-    valor->num = pow(valor->num, 2);
-    valor->den = pow(valor->den, 2);
-
-    return valor;
+    return multiplicaRacionais(valor, valor);
 }
 
 Racional_pt raizNumRacional(Racional_pt numRacional){
-    long double numerador, denominador, resultado;
-
-    numerador = sqrt(numRacional->num);
-    denominador = sqrt(numRacional->den);
-    resultado = numerador / denominador;
-
-    return converteRealEmRacional(resultado);
+   
 }
 
 double converteRacionalEmReal(Racional_pt numRacional){
@@ -173,7 +162,8 @@ double converteRacionalEmReal(Racional_pt numRacional){
 
 // verificar se eh isso mesmo 
 Racional_pt converteRealEmRacional(double numReal){
-    Racional_pt numRacional = (Racional_t*) malloc(sizeof(Racional_t));
+    Racional_pt numRacional;
+    numRacional = criaNumRacional(0, 0);
     long int numerador, denominador;
     long double erro;
 
@@ -197,12 +187,3 @@ int verificaRacionalConverteEmInteiro(Racional_pt numRacional){
         return 0;
 }
 
-// atencao utilizacao da funcao converteRealEmRacional 
-Racional_pt obtemRacionalEntreIntervalos(){
-    Racional_pt numRacional = (Racional_t*) malloc(sizeof(Racional_t));
-    double nInicial = 3.1414, nFinal = 3.1416, numReal;
-
-    numReal = (nInicial + nFinal) / 2;
-
-    return converteRealEmRacional(numReal);
-}

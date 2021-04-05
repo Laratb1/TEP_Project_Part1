@@ -12,7 +12,7 @@ long int retornaNum(Racional_pt numero);
 
 void destroiNum(Racional_pt numRacional);
 
-Racional_pt copiaNumRacional(Racional_pt num1, Racional_pt num2);
+void copiaNumRacional(Racional_pt num1, Racional_pt num2);
 
 int comparaNumeros(Racional_pt valor1, Racional_pt valor2);
 
@@ -26,13 +26,13 @@ int verificaAmbosZero(Racional_pt numRacional);
 
 Racional_pt somaRacionais(Racional_pt valor1, Racional_pt valor2);
 
-Racional_pt acumulaRacional(Racional_pt valor1, Racional_pt valor2);
+void acumulaRacional(Racional_pt valor1, Racional_pt valor2);
 
 Racional_pt subtraiRacionais(Racional_pt valor1, Racional_pt valor2);
 
 Racional_pt multiplicaRacionais(Racional_pt valor1, Racional_pt valor2);
 
-Racional_pt acumulaMultiplicacaoRacionais(Racional_pt valor1, Racional_pt valor2);
+void acumulaMultiplicacaoRacionais(Racional_pt valor1, Racional_pt valor2);
 
 Racional_pt divideRacionais(Racional_pt valor1, Racional_pt valor2);
 
@@ -45,7 +45,5 @@ double converteRacionalEmReal(Racional_pt numRacional);
 Racional_pt converteRealEmRacional(double numReal);
 
 int verificaRacionalConverteEmInteiro(Racional_pt numRacional);
-
-Racional_pt obtemRacionalEntreIntervalos();
 
 #endif
